@@ -1,0 +1,247 @@
+This diagram has been generated with go-structurizr 
+[https://github.com/krzysztofreczek/go-structurizr]
+
+@startuml
+
+title Trainer service components
+
+skinparam {
+  shadowing false
+  arrowFontSize 10
+  defaultTextAlignment center
+  wrapWidth 200
+  maxMessageSize 100
+}
+hide stereotype
+top to bottom direction
+
+scale 4096 width
+
+skinparam rectangle<<_GROUP>> {
+  FontColor #ffffff
+  BorderColor #ffffff
+}
+
+rectangle 0DEFAULT <<_GROUP>> {
+	rectangle "==app.Collector\n<size:10>[component]</size>\n\n" <<DEFAULT>> as 194222215
+}
+rectangle 0DEFAULT <<_GROUP>> {
+	rectangle "==strategystore.Aggregator\n<size:10>[component]</size>\n\n" <<DEFAULT>> as 3566994742
+}
+rectangle 0DEFAULT <<_GROUP>> {
+	rectangle "==handler.batchConsumer\n<size:10>[component]</size>\n\n" <<DEFAULT>> as 681557575
+}
+rectangle 0DEFAULT <<_GROUP>> {
+	rectangle "==tlscfg.certWatcher\n<size:10>[component]</size>\n\n" <<DEFAULT>> as 1253785373
+}
+rectangle 0DEFAULT <<_GROUP>> {
+	rectangle "==tenancy.Options\n<size:10>[component]</size>\n\n" <<DEFAULT>> as 1888079399
+}
+rectangle 0DEFAULT <<_GROUP>> {
+	rectangle "==encoding.DecoderRegistry\n<size:10>[component]</size>\n\n" <<DEFAULT>> as 2923317715
+}
+rectangle 0DEFAULT <<_GROUP>> {
+	rectangle "==.\n<size:10>[component]</size>\n\n" <<DEFAULT>> as 722245873
+}
+rectangle 0DEFAULT <<_GROUP>> {
+	rectangle "==spanstore.Writer\n<size:10>[component]</size>\n\n" <<DEFAULT>> as 495887142
+}
+rectangle 0DEFAULT <<_GROUP>> {
+	rectangle "==processor.SpanProcessor\n<size:10>[component]</size>\n\n" <<DEFAULT>> as 873589871
+}
+rectangle 0DEFAULT <<_GROUP>> {
+	rectangle "==processor.SpansOptions\n<size:10>[component]</size>\n\n" <<DEFAULT>> as 207272996
+}
+rectangle 0DEFAULT <<_GROUP>> {
+	rectangle "==tenancy.Manager\n<size:10>[component]</size>\n\n" <<DEFAULT>> as 1254552226
+}
+rectangle 0DEFAULT <<_GROUP>> {
+	rectangle "==flags.CollectorOptions\n<size:10>[component]</size>\n\n" <<DEFAULT>> as 720182495
+}
+rectangle 0DEFAULT <<_GROUP>> {
+	rectangle "==encoding.Encoder\n<size:10>[component]</size>\n\n" <<DEFAULT>> as 1488327756
+}
+rectangle 0DEFAULT <<_GROUP>> {
+	rectangle "==app.SpanHandlers\n<size:10>[component]</size>\n\n" <<DEFAULT>> as 2020690037
+}
+rectangle 0DEFAULT <<_GROUP>> {
+	rectangle "==encoding.Decoder\n<size:10>[component]</size>\n\n" <<DEFAULT>> as 200720964
+}
+rectangle 0DEFAULT <<_GROUP>> {
+	rectangle "==pflag.Flag\n<size:10>[component]</size>\n\n" <<DEFAULT>> as 2740546096
+}
+rectangle 0DEFAULT <<_GROUP>> {
+	rectangle "==pflag.ParseErrorsWhitelist\n<size:10>[component]</size>\n\n" <<DEFAULT>> as 3380129111
+}
+rectangle 0DEFAULT <<_GROUP>> {
+	rectangle "==tenancy.guard\n<size:10>[component]</size>\n\n" <<DEFAULT>> as 2839403392
+}
+rectangle 0DEFAULT <<_GROUP>> {
+	rectangle "==api_v2.PostSpansRequest\n<size:10>[component]</size>\n\n" <<DEFAULT>> as 3074562961
+}
+rectangle 0DEFAULT <<_GROUP>> {
+	rectangle "==model.Batch\n<size:10>[component]</size>\n\n" <<DEFAULT>> as 1780090777
+}
+rectangle 0DEFAULT <<_GROUP>> {
+	rectangle "==.error\n<size:10>[component]</size>\n\n" <<DEFAULT>> as 3903031125
+}
+rectangle 0DEFAULT <<_GROUP>> {
+	rectangle "==encoding.EncoderRegistry\n<size:10>[component]</size>\n\n" <<DEFAULT>> as 3453468571
+}
+rectangle 0DEFAULT <<_GROUP>> {
+	rectangle "==pflag.Value\n<size:10>[component]</size>\n\n" <<DEFAULT>> as 4022432383
+}
+rectangle 0DEFAULT <<_GROUP>> {
+	rectangle "==flags.GRPCOptions\n<size:10>[component]</size>\n\n" <<DEFAULT>> as 3919267342
+}
+rectangle 0DEFAULT <<_GROUP>> {
+	rectangle "==viper.StringReplacer\n<size:10>[component]</size>\n\n" <<DEFAULT>> as 962978227
+}
+rectangle 0DEFAULT <<_GROUP>> {
+	rectangle "==metrics.Factory\n<size:10>[component]</size>\n\n" <<DEFAULT>> as 4105216386
+}
+rectangle 0DEFAULT <<_GROUP>> {
+	rectangle "==model.Process\n<size:10>[component]</size>\n\n" <<DEFAULT>> as 1690840500
+}
+rectangle 0DEFAULT <<_GROUP>> {
+	rectangle "==receiver.Traces\n<size:10>[component]</size>\n\n" <<DEFAULT>> as 1746067600
+}
+rectangle 0DEFAULT <<_GROUP>> {
+	rectangle "==flags.HTTPOptions\n<size:10>[component]</size>\n\n" <<DEFAULT>> as 82069034
+}
+rectangle 0DEFAULT <<_GROUP>> {
+	rectangle "==tlscfg.Options\n<size:10>[component]</size>\n\n" <<DEFAULT>> as 723141565
+}
+rectangle 0DEFAULT <<_GROUP>> {
+	rectangle "==corscfg.Options\n<size:10>[component]</size>\n\n" <<DEFAULT>> as 95183629
+}
+rectangle 0DEFAULT <<_GROUP>> {
+	rectangle "==viper.FlagValue\n<size:10>[component]</size>\n\n" <<DEFAULT>> as 75234671
+}
+rectangle 0DEFAULT <<_GROUP>> {
+	rectangle "==io.Reader\n<size:10>[component]</size>\n\n" <<DEFAULT>> as 1631815070
+}
+rectangle 0DEFAULT <<_GROUP>> {
+	rectangle "==strategystore.StrategyStore\n<size:10>[component]</size>\n\n" <<DEFAULT>> as 3409809267
+}
+rectangle 0DEFAULT <<_GROUP>> {
+	rectangle "==handler.ZipkinSpansHandler\n<size:10>[component]</size>\n\n" <<DEFAULT>> as 3221218645
+}
+rectangle 0DEFAULT <<_GROUP>> {
+	rectangle "==context.Context\n<size:10>[component]</size>\n\n" <<DEFAULT>> as 2940768993
+}
+rectangle 0DEFAULT <<_GROUP>> {
+	rectangle "==viper.Viper\n<size:10>[component]</size>\n\n" <<DEFAULT>> as 470941580
+}
+rectangle 0DEFAULT <<_GROUP>> {
+	rectangle "==afero.Fs\n<size:10>[component]</size>\n\n" <<DEFAULT>> as 899170964
+}
+rectangle 0DEFAULT <<_GROUP>> {
+	rectangle "==fsnotify.Event\n<size:10>[component]</size>\n\n" <<DEFAULT>> as 218818097
+}
+rectangle 0DEFAULT <<_GROUP>> {
+	rectangle "==viper.FlagValueSet\n<size:10>[component]</size>\n\n" <<DEFAULT>> as 1331084053
+}
+rectangle 0DEFAULT <<_GROUP>> {
+	rectangle "==healthcheck.HealthCheck\n<size:10>[component]</size>\n\n" <<DEFAULT>> as 3387058501
+}
+rectangle 0DEFAULT <<_GROUP>> {
+	rectangle "==http.Handler\n<size:10>[component]</size>\n\n" <<DEFAULT>> as 3276442151
+}
+rectangle 0DEFAULT <<_GROUP>> {
+	rectangle "==handler.JaegerBatchesHandler\n<size:10>[component]</size>\n\n" <<DEFAULT>> as 2119590067
+}
+rectangle 0DEFAULT <<_GROUP>> {
+	rectangle "==handler.GRPCHandler\n<size:10>[component]</size>\n\n" <<DEFAULT>> as 2831171319
+}
+rectangle 0DEFAULT <<_GROUP>> {
+	rectangle "==api_v2.PostSpansResponse\n<size:10>[component]</size>\n\n" <<DEFAULT>> as 4080063951
+}
+rectangle 0DEFAULT <<_GROUP>> {
+	rectangle "==io.Closer\n<size:10>[component]</size>\n\n" <<DEFAULT>> as 3125150059
+}
+rectangle 0DEFAULT <<_GROUP>> {
+	rectangle "==io.Writer\n<size:10>[component]</size>\n\n" <<DEFAULT>> as 1902795650
+}
+rectangle 0DEFAULT <<_GROUP>> {
+	rectangle "==proto.Message\n<size:10>[component]</size>\n\n" <<DEFAULT>> as 2521952708
+}
+rectangle 0DEFAULT <<_GROUP>> {
+	rectangle "==pflag.FlagSet\n<size:10>[component]</size>\n\n" <<DEFAULT>> as 759091072
+}
+4080063951 .[#000000].> 3903031125 : ""
+4080063951 .[#000000].> 2521952708 : ""
+1780090777 .[#000000].> 1690840500 : ""
+1780090777 .[#000000].> 3903031125 : ""
+1780090777 .[#000000].> 2521952708 : ""
+3074562961 .[#000000].> 1780090777 : ""
+3074562961 .[#000000].> 3903031125 : ""
+3074562961 .[#000000].> 2521952708 : ""
+759091072 .[#000000].> 2740546096 : ""
+759091072 .[#000000].> 3903031125 : ""
+759091072 .[#000000].> 4022432383 : ""
+759091072 .[#000000].> 3380129111 : ""
+759091072 .[#000000].> 1902795650 : ""
+759091072 .[#000000].> 759091072 : ""
+1254552226 .[#000000].> 2839403392 : ""
+1254552226 .[#000000].> 2940768993 : ""
+3453468571 .[#000000].> 3903031125 : ""
+3453468571 .[#000000].> 1488327756 : ""
+194222215 .[#000000].> 1746067600 : ""
+194222215 .[#000000].> 4105216386 : ""
+194222215 .[#000000].> 495887142 : ""
+194222215 .[#000000].> 3409809267 : ""
+194222215 .[#000000].> 3387058501 : ""
+194222215 .[#000000].> 3125150059 : ""
+194222215 .[#000000].> 3903031125 : ""
+194222215 .[#000000].> 720182495 : ""
+194222215 .[#000000].> 3566994742 : ""
+194222215 .[#000000].> 873589871 : ""
+194222215 .[#000000].> 2020690037 : ""
+194222215 .[#000000].> 1254552226 : ""
+2831171319 .[#000000].> 681557575 : ""
+2831171319 .[#000000].> 2940768993 : ""
+2831171319 .[#000000].> 3074562961 : ""
+2831171319 .[#000000].> 4080063951 : ""
+2831171319 .[#000000].> 3903031125 : ""
+1690840500 .[#000000].> 3903031125 : ""
+1690840500 .[#000000].> 2521952708 : ""
+1690840500 .[#000000].> 1690840500 : ""
+1690840500 .[#000000].> 1902795650 : ""
+681557575 .[#000000].> 207272996 : ""
+681557575 .[#000000].> 1254552226 : ""
+681557575 .[#000000].> 873589871 : ""
+723141565 .[#000000].> 1253785373 : ""
+723141565 .[#000000].> 3903031125 : ""
+1253785373 .[#000000].> 723141565 : ""
+1253785373 .[#000000].> 3903031125 : ""
+470941580 .[#000000].> 962978227 : ""
+470941580 .[#000000].> 75234671 : ""
+470941580 .[#000000].> 1331084053 : ""
+470941580 .[#000000].> 722245873 : ""
+470941580 .[#000000].> 899170964 : ""
+470941580 .[#000000].> 759091072 : ""
+470941580 .[#000000].> 3453468571 : ""
+470941580 .[#000000].> 3903031125 : ""
+470941580 .[#000000].> 2923317715 : ""
+470941580 .[#000000].> 2740546096 : ""
+470941580 .[#000000].> 1902795650 : ""
+470941580 .[#000000].> 1631815070 : ""
+470941580 .[#000000].> 470941580 : ""
+470941580 .[#000000].> 218818097 : ""
+3919267342 .[#000000].> 1888079399 : ""
+2740546096 .[#000000].> 4022432383 : ""
+2923317715 .[#000000].> 200720964 : ""
+2923317715 .[#000000].> 3903031125 : ""
+2020690037 .[#000000].> 3221218645 : ""
+2020690037 .[#000000].> 2119590067 : ""
+2020690037 .[#000000].> 2831171319 : ""
+82069034 .[#000000].> 723141565 : ""
+82069034 .[#000000].> 95183629 : ""
+3387058501 .[#000000].> 3276442151 : ""
+720182495 .[#000000].> 82069034 : ""
+720182495 .[#000000].> 3919267342 : ""
+720182495 .[#000000].> 470941580 : ""
+720182495 .[#000000].> 720182495 : ""
+720182495 .[#000000].> 3903031125 : ""
+@enduml

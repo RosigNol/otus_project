@@ -1,0 +1,761 @@
+{
+  "configuration" : { },
+  "description" : "Архитектура решения интернет магазина",
+  "documentation" : { },
+  "id" : 1,
+  "lastModifiedDate" : "2024-05-17T10:26:20Z",
+  "model" : {
+    "people" : [ {
+      "description" : "Использует интернет магазин для покупки товаров",
+      "id" : "1",
+      "location" : "Unspecified",
+      "name" : "Пользователь",
+      "properties" : {
+        "structurizr.dsl.identifier" : "operator"
+      },
+      "relationships" : [ {
+        "description" : "Взаимодействует с приложением",
+        "destinationId" : "10",
+        "id" : "14",
+        "properties" : {
+          "structurizr.dsl.identifier" : "b54fd23d-bbb6-49b7-b70e-2b121c659cfe"
+        },
+        "sourceId" : "1",
+        "tags" : "Relationship",
+        "technology" : "Физически"
+      }, {
+        "description" : "Взаимодействует с приложением",
+        "destinationId" : "11",
+        "id" : "15",
+        "properties" : {
+          "structurizr.dsl.identifier" : "0e451782-3966-4a1e-98c6-e11f91667e41"
+        },
+        "sourceId" : "1",
+        "tags" : "Relationship",
+        "technology" : "Физически"
+      }, {
+        "description" : "Взаимодействует с приложением",
+        "destinationId" : "12",
+        "id" : "16",
+        "properties" : {
+          "structurizr.dsl.identifier" : "a8722d74-8138-4c2d-8946-295ced4b067f"
+        },
+        "sourceId" : "1",
+        "tags" : "Relationship",
+        "technology" : "Физически"
+      }, {
+        "description" : "Взаимодействует с приложением",
+        "destinationId" : "13",
+        "id" : "17",
+        "properties" : {
+          "structurizr.dsl.identifier" : "26692de2-8ac5-49ea-be0e-6df10e9e725c"
+        },
+        "sourceId" : "1",
+        "tags" : "Relationship",
+        "technology" : "Физически"
+      } ],
+      "tags" : "Element,Person"
+    } ],
+    "softwareSystems" : [ {
+      "containers" : [ {
+        "description" : "Обеспечивает работу базовых функций сервиса заказов",
+        "documentation" : { },
+        "id" : "3",
+        "name" : "1.1 Order service",
+        "properties" : {
+          "structurizr.dsl.identifier" : "store_order"
+        },
+        "relationships" : [ {
+          "description" : "1.1. Запрос на оплату (списывание денег со счета)",
+          "destinationId" : "4",
+          "id" : "38",
+          "properties" : {
+            "structurizr.dsl.identifier" : "1c"
+          },
+          "sourceId" : "3",
+          "tags" : "Relationship",
+          "technology" : "REST"
+        }, {
+          "description" : "1.2. Запрос на формирование оповещения (о списывание денег со счета)",
+          "destinationId" : "9",
+          "id" : "39",
+          "properties" : {
+            "structurizr.dsl.identifier" : "2c"
+          },
+          "sourceId" : "3",
+          "tags" : "Relationship",
+          "technology" : "MQ"
+        }, {
+          "description" : "Сохраняет информацию о заказе",
+          "destinationId" : "8",
+          "id" : "42",
+          "properties" : {
+            "structurizr.dsl.identifier" : "73decbb2-616f-4fd2-8981-aa14fc2c41f4"
+          },
+          "sourceId" : "3",
+          "tags" : "Relationship",
+          "technology" : "SQL"
+        } ],
+        "tags" : "Element,Container",
+        "technology" : "Golang, Fiber fm"
+      }, {
+        "description" : "Обеспечивает работу базовых функций сервиса оплат",
+        "documentation" : { },
+        "id" : "4",
+        "name" : "1.2 Billing service",
+        "properties" : {
+          "structurizr.dsl.identifier" : "store_billing"
+        },
+        "relationships" : [ {
+          "description" : "Сохраняет информацию о счете",
+          "destinationId" : "8",
+          "id" : "43",
+          "properties" : {
+            "structurizr.dsl.identifier" : "77814f1d-d88d-4546-b887-1c081998f27e"
+          },
+          "sourceId" : "4",
+          "tags" : "Relationship",
+          "technology" : "SQL"
+        } ],
+        "tags" : "Element,Container",
+        "technology" : "Golang, Fiber fm"
+      }, {
+        "description" : "Обеспечивает работу базовых функций сервиса оповещений (E-mail)",
+        "documentation" : { },
+        "id" : "5",
+        "name" : "1.3 Notification service",
+        "properties" : {
+          "structurizr.dsl.identifier" : "store_notification"
+        },
+        "relationships" : [ {
+          "description" : "Сохраняет информацию об оповещениях",
+          "destinationId" : "8",
+          "id" : "45",
+          "properties" : {
+            "structurizr.dsl.identifier" : "f7a5e5ee-462e-46e3-83d3-1e8326f31be6"
+          },
+          "sourceId" : "5",
+          "tags" : "Relationship",
+          "technology" : "SQL"
+        } ],
+        "tags" : "Element,Container",
+        "technology" : "Golang, Fiber fm"
+      }, {
+        "description" : "Обеспечивает работу базовых функций сервиса авторизации",
+        "documentation" : { },
+        "id" : "6",
+        "name" : "1.4 Auth service",
+        "properties" : {
+          "structurizr.dsl.identifier" : "store_auth"
+        },
+        "relationships" : [ {
+          "description" : "Запрашивает информацию для авторизации",
+          "destinationId" : "8",
+          "id" : "44",
+          "properties" : {
+            "structurizr.dsl.identifier" : "eeb4844a-b439-49cd-8987-03862686ce9a"
+          },
+          "sourceId" : "6",
+          "tags" : "Relationship",
+          "technology" : "SQL"
+        } ],
+        "tags" : "Element,Container",
+        "technology" : "Golang, Fiber fm"
+      }, {
+        "description" : "Обеспечивает работу базовых функций сервиса пользователей",
+        "documentation" : { },
+        "id" : "7",
+        "name" : "1.5 User service",
+        "properties" : {
+          "structurizr.dsl.identifier" : "store_user"
+        },
+        "relationships" : [ {
+          "description" : "Сохраняет информацию о пользователе",
+          "destinationId" : "8",
+          "id" : "41",
+          "properties" : {
+            "structurizr.dsl.identifier" : "2847a9ae-689b-4a90-9a10-3335e91ab98a"
+          },
+          "sourceId" : "7",
+          "tags" : "Relationship",
+          "technology" : "SQL"
+        } ],
+        "tags" : "Element,Container",
+        "technology" : "Golang, Fiber fm"
+      }, {
+        "description" : "Хранит бизнес данные приложения (пользователей, заказы, факты оплат, лицевой счет и т.д.)",
+        "documentation" : { },
+        "id" : "8",
+        "name" : "1.6 Общее хранилище",
+        "properties" : {
+          "structurizr.dsl.identifier" : "store_db"
+        },
+        "tags" : "Element,Container,db",
+        "technology" : "PostgreSQL"
+      }, {
+        "description" : "Управление потоками информации между сервисами",
+        "documentation" : { },
+        "id" : "9",
+        "name" : "1.7 Брокер сообщений",
+        "properties" : {
+          "structurizr.dsl.identifier" : "store_rabbit"
+        },
+        "relationships" : [ {
+          "description" : "1.3. Запрос на выдачу сформированого оповещения (о списывание денег со счета)",
+          "destinationId" : "5",
+          "id" : "40",
+          "properties" : {
+            "structurizr.dsl.identifier" : "3c"
+          },
+          "sourceId" : "9",
+          "tags" : "Relationship",
+          "technology" : "MQ"
+        } ],
+        "tags" : "Element,Container,rabbit",
+        "technology" : "RabbitMQ"
+      } ],
+      "description" : "Обеспечивает выполнение бизнес функций приложения интернет магазина (Golang, Fiber fm)",
+      "documentation" : { },
+      "id" : "2",
+      "location" : "Unspecified",
+      "name" : "Store",
+      "properties" : {
+        "structurizr.dsl.identifier" : "store"
+      },
+      "tags" : "Element,Software System,Москва"
+    }, {
+      "description" : "Предоставляет доступ к интернет магазину (Kotlin)",
+      "documentation" : { },
+      "id" : "10",
+      "location" : "Unspecified",
+      "name" : "Мобильное приложение Store (Android)",
+      "properties" : {
+        "structurizr.dsl.identifier" : "storeandroid"
+      },
+      "relationships" : [ {
+        "description" : "Запросы взаимодействия",
+        "destinationId" : "2",
+        "id" : "18",
+        "properties" : {
+          "structurizr.dsl.identifier" : "26d87e8b-879e-4a67-9902-acd03c499e50"
+        },
+        "sourceId" : "10",
+        "tags" : "Relationship",
+        "technology" : "REST"
+      }, {
+        "description" : "Запрос сведений пользователя для отображения",
+        "destinationId" : "7",
+        "id" : "21",
+        "properties" : {
+          "structurizr.dsl.identifier" : "6c7a18f0-7abf-426d-9e87-b5ca5845b21e"
+        },
+        "sourceId" : "10",
+        "tags" : "Relationship",
+        "technology" : "REST"
+      }, {
+        "description" : "Запрос авторизации пользователя",
+        "destinationId" : "6",
+        "id" : "26",
+        "properties" : {
+          "structurizr.dsl.identifier" : "59d62164-2bc6-4a6c-89f3-765a25ab7f1a"
+        },
+        "sourceId" : "10",
+        "tags" : "Relationship",
+        "technology" : "REST"
+      }, {
+        "description" : "1. Запрос формирования заказа",
+        "destinationId" : "3",
+        "id" : "30",
+        "properties" : {
+          "structurizr.dsl.identifier" : "67da26a2-62b1-4668-ba85-5dd13607f7a1"
+        },
+        "sourceId" : "10",
+        "tags" : "Relationship",
+        "technology" : "REST"
+      }, {
+        "description" : "Запрос баланса лицевого счета",
+        "destinationId" : "4",
+        "id" : "34",
+        "properties" : {
+          "structurizr.dsl.identifier" : "b44ff737-8646-4686-a7c1-7710958eb5ec"
+        },
+        "sourceId" : "10",
+        "tags" : "Relationship",
+        "technology" : "REST"
+      } ],
+      "tags" : "Element,Software System,app"
+    }, {
+      "description" : "Предоставляет доступ к интернет магазину",
+      "documentation" : { },
+      "id" : "11",
+      "location" : "Unspecified",
+      "name" : "Мобильное приложение Store (iOS)",
+      "properties" : {
+        "structurizr.dsl.identifier" : "storeios"
+      },
+      "relationships" : [ {
+        "description" : "Запросы взаимодействия",
+        "destinationId" : "2",
+        "id" : "19",
+        "properties" : {
+          "structurizr.dsl.identifier" : "7266ab7c-c81e-4be4-bdb6-b27f7098a2f1"
+        },
+        "sourceId" : "11",
+        "tags" : "Relationship",
+        "technology" : "REST"
+      }, {
+        "description" : "Запрос сведений пользователя для отображения",
+        "destinationId" : "7",
+        "id" : "22",
+        "properties" : {
+          "structurizr.dsl.identifier" : "2ede8fc6-1d18-4739-9274-d0ef7aa0d2b6"
+        },
+        "sourceId" : "11",
+        "tags" : "Relationship",
+        "technology" : "REST"
+      }, {
+        "description" : "Запрос авторизации пользователя",
+        "destinationId" : "6",
+        "id" : "27",
+        "properties" : {
+          "structurizr.dsl.identifier" : "cbb9cba5-483d-48bd-9df5-ca96f95eb6c7"
+        },
+        "sourceId" : "11",
+        "tags" : "Relationship",
+        "technology" : "REST"
+      }, {
+        "description" : "1. Запрос формирования заказа",
+        "destinationId" : "3",
+        "id" : "31",
+        "properties" : {
+          "structurizr.dsl.identifier" : "c9cbba65-da9b-4902-9a5f-a08343ef3ca3"
+        },
+        "sourceId" : "11",
+        "tags" : "Relationship",
+        "technology" : "REST"
+      }, {
+        "description" : "Запрос баланса лицевого счета",
+        "destinationId" : "4",
+        "id" : "35",
+        "properties" : {
+          "structurizr.dsl.identifier" : "d1d675ca-1fbb-4778-8716-e81d41844897"
+        },
+        "sourceId" : "11",
+        "tags" : "Relationship",
+        "technology" : "REST"
+      } ],
+      "tags" : "Element,Software System,app"
+    }, {
+      "description" : "Предоставляет доступ к интернет магазину на смарфонах Huawei и Honor (Kotlin)",
+      "documentation" : { },
+      "id" : "12",
+      "location" : "Unspecified",
+      "name" : "Мобильное приложение Store (Huawei)",
+      "properties" : {
+        "structurizr.dsl.identifier" : "storehuawei"
+      },
+      "relationships" : [ {
+        "description" : "Запросы взаимодействия",
+        "destinationId" : "2",
+        "id" : "20",
+        "properties" : {
+          "structurizr.dsl.identifier" : "2c8d90ba-b389-4f38-abd1-4abb9e6feb5b"
+        },
+        "sourceId" : "12",
+        "tags" : "Relationship",
+        "technology" : "REST"
+      }, {
+        "description" : "Запрос сведений пользователя для отображения",
+        "destinationId" : "7",
+        "id" : "23",
+        "properties" : {
+          "structurizr.dsl.identifier" : "dc184163-c205-4276-86a7-39454491fe09"
+        },
+        "sourceId" : "12",
+        "tags" : "Relationship",
+        "technology" : "REST"
+      }, {
+        "description" : "Запрос авторизации пользователя",
+        "destinationId" : "6",
+        "id" : "28",
+        "properties" : {
+          "structurizr.dsl.identifier" : "58142fa4-47a3-4bca-8f71-f530ec1c4562"
+        },
+        "sourceId" : "12",
+        "tags" : "Relationship",
+        "technology" : "REST"
+      }, {
+        "description" : "1. Запрос формирования заказа",
+        "destinationId" : "3",
+        "id" : "32",
+        "properties" : {
+          "structurizr.dsl.identifier" : "0e0eb32e-c184-4aa7-a038-b655620c6f3f"
+        },
+        "sourceId" : "12",
+        "tags" : "Relationship",
+        "technology" : "REST"
+      }, {
+        "description" : "Запрос баланса лицевого счета",
+        "destinationId" : "4",
+        "id" : "36",
+        "properties" : {
+          "structurizr.dsl.identifier" : "3bf1cd3f-ada2-43b9-9c51-b599f977bbfc"
+        },
+        "sourceId" : "12",
+        "tags" : "Relationship",
+        "technology" : "REST"
+      } ],
+      "tags" : "Element,Software System,app"
+    }, {
+      "description" : "Предоставляет доступ к интернет магазину (JavaScript and Vue)",
+      "documentation" : { },
+      "id" : "13",
+      "location" : "Unspecified",
+      "name" : "Web Store",
+      "properties" : {
+        "structurizr.dsl.identifier" : "storeweb"
+      },
+      "relationships" : [ {
+        "description" : "Запрос сведений пользователя для отображения",
+        "destinationId" : "7",
+        "id" : "24",
+        "properties" : {
+          "structurizr.dsl.identifier" : "d6287c28-f42b-4ff5-9249-41f467f59fc4"
+        },
+        "sourceId" : "13",
+        "tags" : "Relationship",
+        "technology" : "REST"
+      }, {
+        "description" : "Запрос сведений пользователя для отображения",
+        "destinationId" : "2",
+        "id" : "25",
+        "linkedRelationshipId" : "24",
+        "sourceId" : "13",
+        "technology" : "REST"
+      }, {
+        "description" : "Запрос авторизации пользователя",
+        "destinationId" : "6",
+        "id" : "29",
+        "properties" : {
+          "structurizr.dsl.identifier" : "0911b2af-baa0-4784-a3b5-563ea4e98571"
+        },
+        "sourceId" : "13",
+        "tags" : "Relationship",
+        "technology" : "REST"
+      }, {
+        "description" : "1. Запрос формирования заказа",
+        "destinationId" : "3",
+        "id" : "33",
+        "properties" : {
+          "structurizr.dsl.identifier" : "f26044ea-fae5-4909-b003-9f83ad503ce0"
+        },
+        "sourceId" : "13",
+        "tags" : "Relationship",
+        "technology" : "REST"
+      }, {
+        "description" : "Запрос баланса лицевого счета",
+        "destinationId" : "4",
+        "id" : "37",
+        "properties" : {
+          "structurizr.dsl.identifier" : "262e8582-df89-4ac2-b7d3-be32a9d6b9de"
+        },
+        "sourceId" : "13",
+        "tags" : "Relationship",
+        "technology" : "REST"
+      } ],
+      "tags" : "Element,Software System,Web Browser"
+    } ]
+  },
+  "name" : "Интернет магазин (учебный проект отус)",
+  "properties" : {
+    "structurizr.dsl" : "d29ya3NwYWNlICLQmNC90YLQtdGA0L3QtdGCINC80LDQs9Cw0LfQuNC9ICjRg9GH0LXQsdC90YvQuSDQv9GA0L7QtdC60YIg0L7RgtGD0YEpIiAi0JDRgNGF0LjRgtC10LrRgtGD0YDQsCDRgNC10YjQtdC90LjRjyDQuNC90YLQtdGA0L3QtdGCINC80LDQs9Cw0LfQuNC90LAiIHsKCiAgICBtb2RlbCB7CgojINCf0L7Qu9GM0LfQvtCy0LDRgtC10LvQuAogICAgICAgIG9wZXJhdG9yID0gcGVyc29uICLQn9C+0LvRjNC30L7QstCw0YLQtdC70YwiICLQmNGB0L/QvtC70YzQt9GD0LXRgiDQuNC90YLQtdGA0L3QtdGCINC80LDQs9Cw0LfQuNC9INC00LvRjyDQv9C+0LrRg9C/0LrQuCDRgtC+0LLQsNGA0L7QsiIKCiMg0KHQuNGB0YLQtdC80YsKCiAgICAgICAgc3RvcmUgPSBzb2Z0d2FyZVN5c3RlbSAiU3RvcmUiICLQntCx0LXRgdC/0LXRh9C40LLQsNC10YIg0LLRi9C/0L7Qu9C90LXQvdC40LUg0LHQuNC30L3QtdGBINGE0YPQvdC60YbQuNC5INC/0YDQuNC70L7QttC10L3QuNGPINC40L3RgtC10YDQvdC10YIg0LzQsNCz0LDQt9C40L3QsCAoR29sYW5nLCBGaWJlciBmbSkiINCc0L7RgdC60LLQsCB7CiAgICAgICAgCXN0b3JlX29yZGVyID0gY29udGFpbmVyICIxLjEgT3JkZXIgc2VydmljZSIgItCe0LHQtdGB0L/QtdGH0LjQstCw0LXRgiDRgNCw0LHQvtGC0YMg0LHQsNC30L7QstGL0YUg0YTRg9C90LrRhtC40Lkg0YHQtdGA0LLQuNGB0LAg0LfQsNC60LDQt9C+0LIiICJHb2xhbmcsIEZpYmVyIGZtIgogICAgICAgIAlzdG9yZV9iaWxsaW5nID0gY29udGFpbmVyICIxLjIgQmlsbGluZyBzZXJ2aWNlIiAi0J7QsdC10YHQv9C10YfQuNCy0LDQtdGCINGA0LDQsdC+0YLRgyDQsdCw0LfQvtCy0YvRhSDRhNGD0L3QutGG0LjQuSDRgdC10YDQstC40YHQsCDQvtC/0LvQsNGCIiAiR29sYW5nLCBGaWJlciBmbSIKICAgICAgICAJc3RvcmVfbm90aWZpY2F0aW9uID0gY29udGFpbmVyICIxLjMgTm90aWZpY2F0aW9uIHNlcnZpY2UiICLQntCx0LXRgdC/0LXRh9C40LLQsNC10YIg0YDQsNCx0L7RgtGDINCx0LDQt9C+0LLRi9GFINGE0YPQvdC60YbQuNC5INGB0LXRgNCy0LjRgdCwINC+0L/QvtCy0LXRidC10L3QuNC5IChFLW1haWwpIiAiR29sYW5nLCBGaWJlciBmbSIKICAgICAgICAJc3RvcmVfYXV0aCA9IGNvbnRhaW5lciAiMS40IEF1dGggc2VydmljZSIgItCe0LHQtdGB0L/QtdGH0LjQstCw0LXRgiDRgNCw0LHQvtGC0YMg0LHQsNC30L7QstGL0YUg0YTRg9C90LrRhtC40Lkg0YHQtdGA0LLQuNGB0LAg0LDQstGC0L7RgNC40LfQsNGG0LjQuCIgIkdvbGFuZywgRmliZXIgZm0iCiAgICAgICAgCXN0b3JlX3VzZXIgPSBjb250YWluZXIgIjEuNSBVc2VyIHNlcnZpY2UiICLQntCx0LXRgdC/0LXRh9C40LLQsNC10YIg0YDQsNCx0L7RgtGDINCx0LDQt9C+0LLRi9GFINGE0YPQvdC60YbQuNC5INGB0LXRgNCy0LjRgdCwINC/0L7Qu9GM0LfQvtCy0LDRgtC10LvQtdC5IiAiR29sYW5nLCBGaWJlciBmbSIKICAgICAgICAKICAgICAgICAJc3RvcmVfZGIgPSBjb250YWluZXIgIjEuNiDQntCx0YnQtdC1INGF0YDQsNC90LjQu9C40YnQtSIgItCl0YDQsNC90LjRgiDQsdC40LfQvdC10YEg0LTQsNC90L3Ri9C1INC/0YDQuNC70L7QttC10L3QuNGPICjQv9C+0LvRjNC30L7QstCw0YLQtdC70LXQuSwg0LfQsNC60LDQt9GLLCDRhNCw0LrRgtGLINC+0L/Qu9Cw0YIsINC70LjRhtC10LLQvtC5INGB0YfQtdGCINC4INGCLtC0LikiICJQb3N0Z3JlU1FMIiBkYgogICAgICAgIAlzdG9yZV9yYWJiaXQgPSBjb250YWluZXIgIjEuNyDQkdGA0L7QutC10YAg0YHQvtC+0LHRidC10L3QuNC5IiAi0KPQv9GA0LDQstC70LXQvdC40LUg0L/QvtGC0L7QutCw0LzQuCDQuNC90YTQvtGA0LzQsNGG0LjQuCDQvNC10LbQtNGDINGB0LXRgNCy0LjRgdCw0LzQuCIgIlJhYmJpdE1RIiByYWJiaXQKICAgICAgICAKICAgICAgICB9CiAgICAgICAgc3RvcmVhbmRyb2lkID0gc29mdHdhcmVTeXN0ZW0gItCc0L7QsdC40LvRjNC90L7QtSDQv9GA0LjQu9C+0LbQtdC90LjQtSBTdG9yZSAoQW5kcm9pZCkiICLQn9GA0LXQtNC+0YHRgtCw0LLQu9GP0LXRgiDQtNC+0YHRgtGD0L8g0Log0LjQvdGC0LXRgNC90LXRgiDQvNCw0LPQsNC30LjQvdGDIChLb3RsaW4pIiBhcHAKICAgICAgICBzdG9yZWlvcyA9IHNvZnR3YXJlU3lzdGVtICLQnNC+0LHQuNC70YzQvdC+0LUg0L/RgNC40LvQvtC20LXQvdC40LUgU3RvcmUgKGlPUykiICLQn9GA0LXQtNC+0YHRgtCw0LLQu9GP0LXRgiDQtNC+0YHRgtGD0L8g0Log0LjQvdGC0LXRgNC90LXRgiDQvNCw0LPQsNC30LjQvdGDIiBhcHAKICAgICAgICBzdG9yZWh1YXdlaSA9IHNvZnR3YXJlU3lzdGVtICLQnNC+0LHQuNC70YzQvdC+0LUg0L/RgNC40LvQvtC20LXQvdC40LUgU3RvcmUgKEh1YXdlaSkiICLQn9GA0LXQtNC+0YHRgtCw0LLQu9GP0LXRgiDQtNC+0YHRgtGD0L8g0Log0LjQvdGC0LXRgNC90LXRgiDQvNCw0LPQsNC30LjQvdGDINC90LAg0YHQvNCw0YDRhNC+0L3QsNGFIEh1YXdlaSDQuCBIb25vciAoS290bGluKSIgYXBwCiAgICAgICAgc3RvcmV3ZWIgPSBzb2Z0d2FyZVN5c3RlbSAiV2ViIFN0b3JlIiAi0J/RgNC10LTQvtGB0YLQsNCy0LvRj9C10YIg0LTQvtGB0YLRg9C/INC6INC40L3RgtC10YDQvdC10YIg0LzQsNCz0LDQt9C40L3RgyAoSmF2YVNjcmlwdCBhbmQgVnVlKSIgIldlYiBCcm93c2VyIgoKIyMg0JLQt9Cw0LjQvNC+0LTQtdC50YHRgtCy0LjRjyDRgdC40YHRgtC10LwKCiAgICAgICAgb3BlcmF0b3IgLT4gc3RvcmVhbmRyb2lkICLQktC30LDQuNC80L7QtNC10LnRgdGC0LLRg9C10YIg0YEg0L/RgNC40LvQvtC20LXQvdC40LXQvCIgItCk0LjQt9C40YfQtdGB0LrQuCIKICAgICAgICBvcGVyYXRvciAtPiBzdG9yZWlvcyAi0JLQt9Cw0LjQvNC+0LTQtdC50YHRgtCy0YPQtdGCINGBINC/0YDQuNC70L7QttC10L3QuNC10LwiICLQpNC40LfQuNGH0LXRgdC60LgiCiAgICAgICAgb3BlcmF0b3IgLT4gc3RvcmVodWF3ZWkgItCS0LfQsNC40LzQvtC00LXQudGB0YLQstGD0LXRgiDRgSDQv9GA0LjQu9C+0LbQtdC90LjQtdC8IiAi0KTQuNC30LjRh9C10YHQutC4IgogICAgICAgIG9wZXJhdG9yIC0+IHN0b3Jld2ViICLQktC30LDQuNC80L7QtNC10LnRgdGC0LLRg9C10YIg0YEg0L/RgNC40LvQvtC20LXQvdC40LXQvCIgItCk0LjQt9C40YfQtdGB0LrQuCIKICAgICAgICBzdG9yZWFuZHJvaWQgLT4gc3RvcmUgItCX0LDQv9GA0L7RgdGLINCy0LfQsNC40LzQvtC00LXQudGB0YLQstC40Y8iICJSRVNUIgogICAgICAgIHN0b3JlaW9zIC0+IHN0b3JlICLQl9Cw0L/RgNC+0YHRiyDQstC30LDQuNC80L7QtNC10LnRgdGC0LLQuNGPIiAiUkVTVCIKICAgICAgICBzdG9yZWh1YXdlaSAtPiBzdG9yZSAi0JfQsNC/0YDQvtGB0Ysg0LLQt9Cw0LjQvNC+0LTQtdC50YHRgtCy0LjRjyIgIlJFU1QiCgojIyDQmtC+0L3QtdGGINCy0LfQsNC40LzQvtC00LXQudGB0YLQstC40Y8g0YHQuNGB0YLQtdC8CgojINCS0LfQsNC40LzQvtC00LXQudGB0YLQstC40LUg0LrQvtC90YLQtdC50L3QtdGA0L7QsgoKICAgICAgICBzdG9yZWFuZHJvaWQgLT4gc3RvcmVfdXNlciAi0JfQsNC/0YDQvtGBINGB0LLQtdC00LXQvdC40Lkg0L/QvtC70YzQt9C+0LLQsNGC0LXQu9GPINC00LvRjyDQvtGC0L7QsdGA0LDQttC10L3QuNGPIiAiUkVTVCIKICAgICAgICBzdG9yZWlvcyAtPiBzdG9yZV91c2VyICLQl9Cw0L/RgNC+0YEg0YHQstC10LTQtdC90LjQuSDQv9C+0LvRjNC30L7QstCw0YLQtdC70Y8g0LTQu9GPINC+0YLQvtCx0YDQsNC20LXQvdC40Y8iICJSRVNUIgogICAgICAgIHN0b3JlaHVhd2VpIC0+IHN0b3JlX3VzZXIgItCX0LDQv9GA0L7RgSDRgdCy0LXQtNC10L3QuNC5INC/0L7Qu9GM0LfQvtCy0LDRgtC10LvRjyDQtNC70Y8g0L7RgtC+0LHRgNCw0LbQtdC90LjRjyIgIlJFU1QiCiAgICAgICAgc3RvcmV3ZWIgLT4gc3RvcmVfdXNlciAi0JfQsNC/0YDQvtGBINGB0LLQtdC00LXQvdC40Lkg0L/QvtC70YzQt9C+0LLQsNGC0LXQu9GPINC00LvRjyDQvtGC0L7QsdGA0LDQttC10L3QuNGPIiAiUkVTVCIKCiAgICAgICAgc3RvcmVhbmRyb2lkIC0+IHN0b3JlX2F1dGggItCX0LDQv9GA0L7RgSDQsNCy0YLQvtGA0LjQt9Cw0YbQuNC4INC/0L7Qu9GM0LfQvtCy0LDRgtC10LvRjyIgIlJFU1QiCiAgICAgICAgc3RvcmVpb3MgLT4gc3RvcmVfYXV0aCAi0JfQsNC/0YDQvtGBINCw0LLRgtC+0YDQuNC30LDRhtC40Lgg0L/QvtC70YzQt9C+0LLQsNGC0LXQu9GPIiAiUkVTVCIKICAgICAgICBzdG9yZWh1YXdlaSAtPiBzdG9yZV9hdXRoICLQl9Cw0L/RgNC+0YEg0LDQstGC0L7RgNC40LfQsNGG0LjQuCDQv9C+0LvRjNC30L7QstCw0YLQtdC70Y8iICJSRVNUIgogICAgICAgIHN0b3Jld2ViIC0+IHN0b3JlX2F1dGggItCX0LDQv9GA0L7RgSDQsNCy0YLQvtGA0LjQt9Cw0YbQuNC4INC/0L7Qu9GM0LfQvtCy0LDRgtC10LvRjyIgIlJFU1QiCgogICAgICAgIHN0b3JlYW5kcm9pZCAtPiBzdG9yZV9vcmRlciAiMS4g0JfQsNC/0YDQvtGBINGE0L7RgNC80LjRgNC+0LLQsNC90LjRjyDQt9Cw0LrQsNC30LAiICJSRVNUIgogICAgICAgIHN0b3JlaW9zIC0+IHN0b3JlX29yZGVyICIxLiDQl9Cw0L/RgNC+0YEg0YTQvtGA0LzQuNGA0L7QstCw0L3QuNGPINC30LDQutCw0LfQsCIgIlJFU1QiCiAgICAgICAgc3RvcmVodWF3ZWkgLT4gc3RvcmVfb3JkZXIgIjEuINCX0LDQv9GA0L7RgSDRhNC+0YDQvNC40YDQvtCy0LDQvdC40Y8g0LfQsNC60LDQt9CwIiAiUkVTVCIKICAgICAgICBzdG9yZXdlYiAtPiBzdG9yZV9vcmRlciAiMS4g0JfQsNC/0YDQvtGBINGE0L7RgNC80LjRgNC+0LLQsNC90LjRjyDQt9Cw0LrQsNC30LAiICJSRVNUIgoKICAgICAgICBzdG9yZWFuZHJvaWQgLT4gc3RvcmVfYmlsbGluZyAi0JfQsNC/0YDQvtGBINCx0LDQu9Cw0L3RgdCwINC70LjRhtC10LLQvtCz0L4g0YHRh9C10YLQsCIgIlJFU1QiCiAgICAgICAgc3RvcmVpb3MgLT4gc3RvcmVfYmlsbGluZyAi0JfQsNC/0YDQvtGBINCx0LDQu9Cw0L3RgdCwINC70LjRhtC10LLQvtCz0L4g0YHRh9C10YLQsCIgIlJFU1QiCiAgICAgICAgc3RvcmVodWF3ZWkgLT4gc3RvcmVfYmlsbGluZyAi0JfQsNC/0YDQvtGBINCx0LDQu9Cw0L3RgdCwINC70LjRhtC10LLQvtCz0L4g0YHRh9C10YLQsCIgIlJFU1QiCiAgICAgICAgc3RvcmV3ZWIgLT4gc3RvcmVfYmlsbGluZyAi0JfQsNC/0YDQvtGBINCx0LDQu9Cw0L3RgdCwINC70LjRhtC10LLQvtCz0L4g0YHRh9C10YLQsCIgIlJFU1QiCgogICAgICAgIDFjID0gc3RvcmVfb3JkZXIgLT4gc3RvcmVfYmlsbGluZyAiMS4xLiDQl9Cw0L/RgNC+0YEg0L3QsCDQvtC/0LvQsNGC0YMgKNGB0L/QuNGB0YvQstCw0L3QuNC1INC00LXQvdC10LMg0YHQviDRgdGH0LXRgtCwKSIgIlJFU1QiCiAgICAgICAgMmMgPSBzdG9yZV9vcmRlciAtPiBzdG9yZV9yYWJiaXQgIjEuMi4g0JfQsNC/0YDQvtGBINC90LAg0YTQvtGA0LzQuNGA0L7QstCw0L3QuNC1INC+0L/QvtCy0LXRidC10L3QuNGPICjQviDRgdC/0LjRgdGL0LLQsNC90LjQtSDQtNC10L3QtdCzINGB0L4g0YHRh9C10YLQsCkiICJNUSIKICAgICAgICAzYyA9IHN0b3JlX3JhYmJpdCAtPiBzdG9yZV9ub3RpZmljYXRpb24gIjEuMy4g0JfQsNC/0YDQvtGBINC90LAg0LLRi9C00LDRh9GDINGB0YTQvtGA0LzQuNGA0L7QstCw0L3QvtCz0L4g0L7Qv9C+0LLQtdGJ0LXQvdC40Y8gKNC+INGB0L/QuNGB0YvQstCw0L3QuNC1INC00LXQvdC10LMg0YHQviDRgdGH0LXRgtCwKSIgIk1RIgoKICAgICAgICBzdG9yZV91c2VyIC0+IHN0b3JlX2RiICLQodC+0YXRgNCw0L3Rj9C10YIg0LjQvdGE0L7RgNC80LDRhtC40Y4g0L4g0L/QvtC70YzQt9C+0LLQsNGC0LXQu9C1IiAiU1FMIgogICAgICAgIHN0b3JlX29yZGVyIC0+IHN0b3JlX2RiICLQodC+0YXRgNCw0L3Rj9C10YIg0LjQvdGE0L7RgNC80LDRhtC40Y4g0L4g0LfQsNC60LDQt9C1IiAiU1FMIgogICAgICAgIHN0b3JlX2JpbGxpbmcgLT4gc3RvcmVfZGIgItCh0L7RhdGA0LDQvdGP0LXRgiDQuNC90YTQvtGA0LzQsNGG0LjRjiDQviDRgdGH0LXRgtC1IiAiU1FMIgogICAgICAgIHN0b3JlX2F1dGggLT4gc3RvcmVfZGIgItCX0LDQv9GA0LDRiNC40LLQsNC10YIg0LjQvdGE0L7RgNC80LDRhtC40Y4g0LTQu9GPINCw0LLRgtC+0YDQuNC30LDRhtC40LgiICJTUUwiCiAgICAgICAgc3RvcmVfbm90aWZpY2F0aW9uIC0+IHN0b3JlX2RiICLQodC+0YXRgNCw0L3Rj9C10YIg0LjQvdGE0L7RgNC80LDRhtC40Y4g0L7QsSDQvtC/0L7QstC10YnQtdC90LjRj9GFIiAiU1FMIgoKIyDQmtC+0L3QtdGGINCy0LfQsNC40LzQvtC00LXQudGB0YLQstC40Y8g0LrQvtC90YLQtdC50L3QtdGA0L7QsgoKIyDQktC30LDQuNC80L7QtNC10LnRgdGC0LLQuNGPINC60L7QvNC/0L7QvdC10L3RgtC+0LIKCiMg0JrQvtC90LXRhiDQstC30LDQuNC80L7QtNC10LnRgdGC0LLQuNGPINC60L7QvNC/0L7QvdC10L3RgtC+0LIKCiAgICB9CiAgICB2aWV3cyB7CgogICAgICAgIHN5c3RlbWxhbmRzY2FwZSAiczAxLVN5c3RlbUxhbmRzY2FwZSIgItCh0LjRgdGC0LXQvNC90YvQuSDQu9Cw0L3QtNGI0LDRhNGCIiB7CiAgICAgICAgICAgIHRpdGxlICJbU3RvcmUtMDFdINCh0YXQtdC80LAg0YHQuNGB0YLQtdC80L3QvtCz0L4g0LrQvtC90YLQtdC60YHRgtCwINGA0LDQsdC+0YLRiyBTdG9yZSIKICAgICAgICAgICAgaW5jbHVkZSAqCiAgICAgICAgfQoKICAgICAgICBjb250YWluZXIgc3RvcmUgInMwMi1Db250YWluZXJzIiAi0JTQuNCw0LPRgNCw0LzQvNCwINC60L7QvdGC0LXQudC90LXRgNC+0LIiIHsKICAgICAgICAgICAgdGl0bGUgIltTdG9yZS0wMl0g0KHRhdC10LzQsCDQutC+0L3RgtC10LnQvdC10YDQvtCyIFN0b3JlIgogICAgICAgICAgICBpbmNsdWRlICoKICAgICAgICB9CgogICAgICAgIHN0eWxlcyB7CgogICAgICAgICAgICBlbGVtZW50ICJQZXJzb24iIHsKICAgICAgICAgICAgICAgIHNoYXBlIHBlcnNvbgogICAgICAgICAgICAgICAgYmFja2dyb3VuZCAjMDg0MjdiCiAgICAgICAgICAgICAgICBjb2xvciAjZmZmZmZmCiAgICAgICAgICAgIH0KCiAgICAgICAgICAgIGVsZW1lbnQgZGIgewogICAgICAgICAgICAgICAgc2hhcGUgY3lsaW5kZXIKICAgICAgICAgICAgICAgICNiYWNrZ3JvdW5kICMwODQyN2IKICAgICAgICAgICAgICAgICNjb2xvciAjZmZmZmZmCiAgICAgICAgICAgIH0KCiAgICAgICAgICAgIGVsZW1lbnQgcmFiYml0IHsKICAgICAgICAgICAgICAgIHNoYXBlIHBpcGUKICAgICAgICAgICAgICAgICNiYWNrZ3JvdW5kICMwODQyN2IKICAgICAgICAgICAgICAgICNjb2xvciAjZmZmZmZmCiAgICAgICAgICAgIH0KCiAgICAgICAgICAgIGVsZW1lbnQgYXBwIHsKICAgICAgICAgICAgICAgIHNoYXBlIE1vYmlsZURldmljZVBvcnRyYWl0CiAgICAgICAgICAgICAgICAjYmFja2dyb3VuZCAjMDg0MjdiCiAgICAgICAgICAgICAgICAjY29sb3IgI2ZmZmZmZgogICAgICAgICAgICB9CgogICAgICAgICAgICBlbGVtZW50INCc0L7RgdC60LLQsCB7CiAgICAgICAgICAgICAgICBiYWNrZ3JvdW5kICNDQzIyMjIKICAgICAgICAgICAgICAgIGNvbG9yICNmZmZmZmYKICAgICAgICAgICAgfQoKICAgICAgICAgICAgZWxlbWVudCAiV2ViIEJyb3dzZXIiIHsKICAgICAgICAgICAgICAgIHNoYXBlIFdlYkJyb3dzZXIKICAgICAgICAgICAgfQoKICAgICAgICB9CgogICAgfQoKfQo="
+  },
+  "views" : {
+    "configuration" : {
+      "branding" : { },
+      "lastSavedView" : "s02-Containers",
+      "styles" : {
+        "elements" : [ {
+          "background" : "#08427b",
+          "color" : "#ffffff",
+          "shape" : "Person",
+          "tag" : "Person"
+        }, {
+          "shape" : "Cylinder",
+          "tag" : "db"
+        }, {
+          "shape" : "Pipe",
+          "tag" : "rabbit"
+        }, {
+          "shape" : "MobileDevicePortrait",
+          "tag" : "app"
+        }, {
+          "background" : "#cc2222",
+          "color" : "#ffffff",
+          "tag" : "Москва"
+        }, {
+          "shape" : "WebBrowser",
+          "tag" : "Web Browser"
+        } ]
+      },
+      "terminology" : { }
+    },
+    "containerViews" : [ {
+      "description" : "Диаграмма контейнеров",
+      "dimensions" : {
+        "height" : 3220,
+        "width" : 7100
+      },
+      "elements" : [ {
+        "id" : "3",
+        "x" : 3325,
+        "y" : 808
+      }, {
+        "id" : "4",
+        "x" : 3933,
+        "y" : 1408
+      }, {
+        "id" : "5",
+        "x" : 3775,
+        "y" : 2008
+      }, {
+        "id" : "6",
+        "x" : 3025,
+        "y" : 2008
+      }, {
+        "id" : "7",
+        "x" : 4833,
+        "y" : 2008
+      }, {
+        "id" : "8",
+        "x" : 3775,
+        "y" : 2608
+      }, {
+        "id" : "9",
+        "x" : 3183,
+        "y" : 1408
+      }, {
+        "id" : "10",
+        "x" : 1054,
+        "y" : 208
+      }, {
+        "id" : "11",
+        "x" : 2342,
+        "y" : 208
+      }, {
+        "id" : "12",
+        "x" : 4237,
+        "y" : 208
+      }, {
+        "id" : "13",
+        "x" : 5829,
+        "y" : 208
+      } ],
+      "externalSoftwareSystemBoundariesVisible" : false,
+      "key" : "s02-Containers",
+      "order" : 2,
+      "paperSize" : "A1_Landscape",
+      "relationships" : [ {
+        "id" : "21",
+        "vertices" : [ {
+          "x" : 1904,
+          "y" : 1108
+        }, {
+          "x" : 2829,
+          "y" : 1708
+        }, {
+          "x" : 4375,
+          "y" : 2008
+        } ]
+      }, {
+        "id" : "22",
+        "vertices" : [ {
+          "x" : 2775,
+          "y" : 1108
+        }, {
+          "x" : 3033,
+          "y" : 1708
+        } ]
+      }, {
+        "id" : "23",
+        "vertices" : [ {
+          "x" : 5067,
+          "y" : 704
+        }, {
+          "x" : 5067,
+          "y" : 1708
+        } ]
+      }, {
+        "id" : "24",
+        "vertices" : [ {
+          "x" : 6892,
+          "y" : 704
+        }, {
+          "x" : 6892,
+          "y" : 1708
+        } ]
+      }, {
+        "id" : "26",
+        "vertices" : [ {
+          "x" : 208,
+          "y" : 704
+        }, {
+          "x" : 208,
+          "y" : 1708
+        } ]
+      }, {
+        "id" : "27",
+        "vertices" : [ {
+          "x" : 2033,
+          "y" : 704
+        }, {
+          "x" : 2033,
+          "y" : 1708
+        } ]
+      }, {
+        "id" : "28",
+        "vertices" : [ {
+          "x" : 4550,
+          "y" : 704
+        }, {
+          "x" : 4550,
+          "y" : 1108
+        }, {
+          "x" : 4533,
+          "y" : 1708
+        }, {
+          "x" : 3625,
+          "y" : 2008
+        } ]
+      }, {
+        "id" : "29",
+        "vertices" : [ {
+          "x" : 5412,
+          "y" : 1108
+        }, {
+          "x" : 4767,
+          "y" : 1708
+        }, {
+          "x" : 3625,
+          "y" : 2008
+        } ]
+      }, {
+        "id" : "30"
+      }, {
+        "id" : "31"
+      }, {
+        "id" : "32"
+      }, {
+        "id" : "33"
+      }, {
+        "id" : "34",
+        "vertices" : [ {
+          "x" : 2775,
+          "y" : 1108
+        }, {
+          "x" : 3783,
+          "y" : 1408
+        } ]
+      }, {
+        "id" : "35",
+        "vertices" : [ {
+          "x" : 3175,
+          "y" : 1108
+        } ]
+      }, {
+        "id" : "36"
+      }, {
+        "id" : "37"
+      }, {
+        "id" : "38"
+      }, {
+        "id" : "39"
+      }, {
+        "id" : "40"
+      }, {
+        "id" : "41"
+      }, {
+        "id" : "42",
+        "vertices" : [ {
+          "x" : 3033,
+          "y" : 1408
+        }, {
+          "x" : 2875,
+          "y" : 2008
+        }, {
+          "x" : 2875,
+          "y" : 2308
+        } ]
+      }, {
+        "id" : "43",
+        "vertices" : [ {
+          "x" : 4375,
+          "y" : 2008
+        }, {
+          "x" : 4375,
+          "y" : 2308
+        } ]
+      }, {
+        "id" : "44"
+      }, {
+        "id" : "45"
+      } ],
+      "softwareSystemId" : "2",
+      "title" : "[Store-02] Схема контейнеров Store"
+    } ],
+    "systemLandscapeViews" : [ {
+      "description" : "Системный ландшафт",
+      "dimensions" : {
+        "height" : 2016,
+        "width" : 3116
+      },
+      "elements" : [ {
+        "id" : "1",
+        "x" : 1358,
+        "y" : 208
+      }, {
+        "id" : "2",
+        "x" : 1333,
+        "y" : 1508
+      }, {
+        "id" : "10",
+        "x" : 208,
+        "y" : 908
+      }, {
+        "id" : "11",
+        "x" : 958,
+        "y" : 908
+      }, {
+        "id" : "12",
+        "x" : 1708,
+        "y" : 908
+      }, {
+        "id" : "13",
+        "x" : 2458,
+        "y" : 908
+      } ],
+      "enterpriseBoundaryVisible" : true,
+      "key" : "s01-SystemLandscape",
+      "order" : 1,
+      "paperSize" : "A4_Landscape",
+      "relationships" : [ {
+        "id" : "14"
+      }, {
+        "id" : "15"
+      }, {
+        "id" : "16"
+      }, {
+        "id" : "17"
+      }, {
+        "id" : "18"
+      }, {
+        "id" : "19"
+      }, {
+        "id" : "20"
+      }, {
+        "id" : "25"
+      } ],
+      "title" : "[Store-01] Схема системного контекста работы Store"
+    } ]
+  }
+}
